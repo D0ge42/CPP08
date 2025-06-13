@@ -26,6 +26,16 @@ int main()
   std::cout << "\033[1;91mShortestspan\033[0m: " << sp1.shortestSpan() << std::endl;
   std::cout << "\033[1;92mLongestSpan\033[0m: " << sp1.longestSpan() << std::endl;
 
+  std::cout << "\n\033[1;94mTrying valid container with 5 negative and positive numbers\033[0m ✅" << std::endl;
+  Span sp4 = Span(5);
+  sp4.addNumber(-2);
+  sp4.addNumber(-24);
+  sp4.addNumber(5);
+  sp4.addNumber(32);
+  sp4.addNumber(0);
+  sp4.printContainer();
+  std::cout << "\033[1;91mShortestspan\033[0m: " << sp4.shortestSpan() << std::endl;
+  std::cout << "\033[1;92mLongestSpan\033[0m: " << sp4.longestSpan() << std::endl;
 
   std::cout << "\n\033[1;94mTrying non-valid container with 1 number\033[0m ⛔" << std::endl;
   try
@@ -50,7 +60,20 @@ int main()
   {
     std::cout << e.what() << std::endl;
   }
+
+  std::cout << "\n\033[1;94mTrying copy assignment operator \033[0m ⚙️";
+
+  Span sp2;
+  Span sp3(5);
+  sp3.addNumber(5);
+  sp3.addNumber(5);
+  sp3.addNumber(5);
+  sp3.addNumber(5);
+  sp3.addNumber(5);
+  sp2 = sp3;
+  sp2.printContainer();
   std::cout << '\n';
+
 
   return 0;
 }
