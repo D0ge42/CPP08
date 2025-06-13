@@ -1,0 +1,38 @@
+[
+ {
+  "directory": "/home/doge/CPP08/ex01",
+  "arguments": [
+   "g++",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-std=c++98",
+   "-Iincludes",
+   "-g",
+   "-gdwarf-4",
+   "-c",
+   "srcs/main.cpp",
+   "-o",
+   "objs/main.o"
+  ],
+  "file": "srcs/main.cpp"
+ },
+ {
+  "directory": "/home/doge/CPP08/ex01",
+  "arguments": [
+   "g++",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-std=c++98",
+   "-Iincludes",
+   "-g",
+   "-gdwarf-4",
+   "-c",
+   "srcs/Span.cpp",
+   "-o",
+   "objs/Span.o"
+  ],
+  "file": "srcs/Span.cpp"
+ }
+]
