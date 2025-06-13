@@ -10,6 +10,7 @@ class Span
 {
   private:
     std::vector<int> _vec;
+    unsigned int _maxSize;
 
   public:
     Span(void);
@@ -26,18 +27,20 @@ class Span
 
     class TooManyNumbersException: public std::exception
     {
-      const char *what() const throw()
-      {
-        return "TooManyNumbersException:: You've reached the maximum size of numbers in the container";
-      }
+      public:
+        const char *what() const throw()
+        {
+          return "TooManyNumbersException:: You've reached the maximum size of numbers in the container";
+        }
     };
 
     class NoSpanFoundException: public std::exception
     {
-      const char *what() const throw()
-      {
-        return "NoSpanFoundException:: Couldn't find a span. Either the container is empty or it only contains 1 element.";
-      }
+      public:
+        const char *what() const throw()
+        {
+          return "NoSpanFoundException:: Couldn't find a span. Either the container is empty or it only contains 1 element.";
+        }
     };
 
 };
