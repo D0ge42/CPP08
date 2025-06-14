@@ -1,8 +1,12 @@
 #include "Span.hpp"
+#include <cstdlib>
 #include <iostream>
+
+#define MAX 1000
 
 int main()
 {
+  //####################################################################################//
   std::cout << "\n\033[1;94mTrying valid container with 5 numbers\033[0m ✅" << std::endl;
   Span sp = Span(5);
   sp.addNumber(6);
@@ -15,6 +19,7 @@ int main()
   std::cout << "\033[1;92mLongestSpan\033[0m:" << sp.longestSpan() << std::endl;
 
 
+  //####################################################################################//
   std::cout << "\n\033[1;94mTrying valid container with 5 numbers\033[0m ✅" << std::endl;
   Span sp1 = Span(5);
   sp1.addNumber(2);
@@ -26,6 +31,7 @@ int main()
   std::cout << "\033[1;91mShortestspan\033[0m: " << sp1.shortestSpan() << std::endl;
   std::cout << "\033[1;92mLongestSpan\033[0m: " << sp1.longestSpan() << std::endl;
 
+  //####################################################################################//
   std::cout << "\n\033[1;94mTrying valid container with 5 negative and positive numbers\033[0m ✅" << std::endl;
   Span sp4 = Span(5);
   sp4.addNumber(-2);
@@ -37,6 +43,48 @@ int main()
   std::cout << "\033[1;91mShortestspan\033[0m: " << sp4.shortestSpan() << std::endl;
   std::cout << "\033[1;92mLongestSpan\033[0m: " << sp4.longestSpan() << std::endl;
 
+  //####################################################################################//
+  std::cout << "\n\033[1;94mTrying to add more numbers at once\033[0m ✅" << std::endl;
+
+  Span sp5 = Span(10);
+  int array[10];
+  srand(time(NULL));
+
+  for (int i = 0;  i < 10; i++)
+    array[i] = rand() % MAX;
+
+  std::vector<int> vector_to_add;
+  vector_to_add.insert(vector_to_add.end(),array,array+10);
+  sp5.addMultipleNumbers(vector_to_add);
+  sp5.printContainer();
+
+  std::cout << "\033[1;91mShortestspan\033[0m:" << sp5.shortestSpan() << std::endl;
+  std::cout << "\033[1;92mLongestSpan\033[0m:" << sp5.longestSpan() << std::endl;
+
+  //####################################################################################//
+  std::cout << "\n\033[1;94mTrying to add more numbers at once, going past MaxSize \033[0m ⛔" << std::endl;
+
+  Span sp6 = Span(5);
+  int array1[10];
+  srand(time(NULL));
+
+  for (int i = 0;  i < 10; i++)
+    array1[i] = rand() % MAX;
+
+  std::vector<int> vector_to_add1;
+  vector_to_add1.insert(vector_to_add1.end(),array1,array1+10);
+
+  try
+  {
+    sp6.addMultipleNumbers(vector_to_add1);
+  }
+  catch (Span::TooManyNumbersException &e)
+  {
+    std::cout << e.what() << std::endl;
+  }
+
+  //####################################################################################//
+
   std::cout << "\n\033[1;94mTrying non-valid container with 1 number\033[0m ⛔" << std::endl;
   try
   {
@@ -47,6 +95,7 @@ int main()
     std::cout << e.what() << std::endl;
   }
 
+  //####################################################################################//
 
   std::cout << "\n\033[1;94mTrying to add max_size +1 elements \033[0m ⛔" << std::endl;
   try
@@ -61,6 +110,7 @@ int main()
     std::cout << e.what() << std::endl;
   }
 
+  //####################################################################################//
   std::cout << "\n\033[1;94mTrying copy assignment operator \033[0m ⚙️";
 
   Span sp2;

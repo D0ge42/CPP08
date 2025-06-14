@@ -20,7 +20,8 @@ class Span
 
     Span &operator=(const Span &other);
     void addNumber(int num);
-    void addMultipleNumbers();
+    // void addMultipleNumbers(int *array, int num_of_elements);
+    void addMultipleNumbers(std::vector<int> to_add);
     int shortestSpan();
     int longestSpan();
     void printContainer();

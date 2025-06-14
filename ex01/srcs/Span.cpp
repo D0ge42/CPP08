@@ -5,7 +5,7 @@
 #include <vector>
 #include <iostream>
 
-static int getSpan(int x, int y);
+static inline int getSpan(int x, int y){return abs(x - y);}
 
 void Span::addNumber(int num)
 {
@@ -14,6 +14,14 @@ void Span::addNumber(int num)
   else
     throw TooManyNumbersException();
 }
+
+void Span::addMultipleNumbers(std::vector<int> to_add)
+{
+  if (this->_vec.size() + to_add.size() > this->_maxSize)
+    throw TooManyNumbersException();
+  this->_vec.insert(_vec.end(),to_add.begin(),to_add.end());
+}
+
 
 int Span::shortestSpan()
 {
@@ -52,10 +60,6 @@ int Span::longestSpan()
 }
 
 
-static int getSpan(int x, int y)
-{
-  return abs(x - y);
-}
 
 void Span::printContainer()
 {
